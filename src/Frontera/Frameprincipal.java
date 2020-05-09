@@ -1,13 +1,19 @@
 
 package Frontera;
 
+import Entidad.Sistema;
+import Entidad.Usuario;
+import java.util.ArrayList;
+
 
 public class Frameprincipal extends javax.swing.JFrame {
 
     private Registro reg= new Registro();
     private Formulario formu=new Formulario();
+    public static Sistema sistema= new Sistema();
     public Frameprincipal() {
         initComponents();
+        inicializacion();
     }
 
     
@@ -73,12 +79,10 @@ public class Frameprincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registroBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroBActionPerformed
-     
     this.setVisible(false);
     this.removeAll();
     reg.setVisible(true);
-    
-    
+        
     }//GEN-LAST:event_registroBActionPerformed
 
     private void ingresoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresoBActionPerformed
@@ -91,8 +95,9 @@ public class Frameprincipal extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
-      
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -117,7 +122,34 @@ public class Frameprincipal extends javax.swing.JFrame {
                 new Frameprincipal().setVisible(true);
             }
         });
+    
+        
     }
+     public void inicializacion(){
+        ArrayList<Usuario> usuarios= new ArrayList<Usuario>(); 
+        Usuario a= new Usuario();
+        Usuario b= new Usuario();
+        Usuario c= new Usuario();
+        
+        a.setNombre("juan");
+        a.setPassword("1234");
+        b.setNombre("pedro");
+        b.setPassword("123");
+        c.setNombre("Maria");
+        c.setPassword("12345");
+        
+        usuarios.add(a);
+        usuarios.add(b);
+        usuarios.add(c);
+        
+        sistema.setUsuarios(usuarios);
+         for (Usuario u:sistema.getUsuarios()) {
+             System.out.println(u.getNombre());
+             System.out.println(u.getPassword());
+             System.out.println("--------------------------------");
+             
+         }
+     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ingresoB;

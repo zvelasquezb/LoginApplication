@@ -5,6 +5,9 @@
  */
 package Frontera;
 
+import Control.ValidarLogin;
+import Entidad.Usuario;
+
 /**
  *
  * @author Zamir
@@ -47,6 +50,11 @@ public class Registro extends javax.swing.JFrame {
         });
 
         aceptarB.setText("Aceptar");
+        aceptarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarBActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -97,6 +105,16 @@ public class Registro extends javax.swing.JFrame {
     private void nombreTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreTFActionPerformed
+
+    private void aceptarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarBActionPerformed
+    Usuario usuario = new Usuario();
+    usuario.setNombre(nombreTF.getText());
+    usuario.setPassword(contraseniaTF.getText());
+    ValidarLogin validar = new ValidarLogin();
+        System.out.println("------------------");
+        String  resultado = validar.VerificarLogin(usuario);
+        System.out.println(resultado);
+    }//GEN-LAST:event_aceptarBActionPerformed
 
     /**
      * @param args the command line arguments
